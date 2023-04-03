@@ -1,0 +1,152 @@
+import 'package:car_tech/modules/layout_screens/one/wheel_screen.dart';
+import 'package:car_tech/modules/location/get_lat_long_address.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../../constants/components.dart';
+import '../../../constants/transitions.dart';
+import 'fix_screen.dart';
+import 'other_screen.dart';
+import 'wn4_screen.dart';
+
+class ScreenOne extends StatelessWidget {
+  const ScreenOne({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                buildContainer(
+                  size,
+                  'a1',
+                  'ونش',
+                  () => Navigator.push(
+                    context,
+                    CustomPageRoute1(
+                      child: const GetLatLongScreen(),
+                    ),
+                  ),
+                ),
+                buildContainer(
+                  size,
+                  'a2',
+                  'تبديل كاوتش',
+                  () => showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      content: Lottie.asset('assets/lotties/a2.json'),
+                      actions: [
+                        Center(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    CustomPageRoute1(
+                                      child: const GetLatLongScreen(),
+                                    ),
+                                  );
+                                },
+                                child: shadeMask(
+                                  'مش معايا',
+                                  GoogleFonts.cairo(fontSize: 20),
+                                ),
+                              ),
+                              const Spacer(),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    CustomPageRoute1(
+                                      child: const GetLatLongScreen(),
+                                    ),
+                                  );
+                                },
+                                child: shadeMask(
+                                  'معايا استبن',
+                                  GoogleFonts.cairo(fontSize: 20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                buildContainer(
+                  size,
+                  'a5',
+                  'تصليح عطل',
+                  () => Navigator.push(
+                    context,
+                    CustomPageRoute1(
+                      child: const FixScreen(),
+                    ),
+                  ),
+                ),
+                buildContainer(
+                  size,
+                  'a4',
+                  'أخرى',
+                  () => Navigator.push(
+                    context,
+                    CustomPageRoute1(
+                      child: const OtherScreen(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column buildContainer(Size size, lottie, text, function) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            function();
+          },
+          child: Container(
+            height: size.height * .3,
+            width: size.width * .8,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.all(Radius.circular(size.width * .1)),
+            ),
+            child: Column(
+              children: [
+                Lottie.asset('assets/lotties/$lottie.json',
+                    height: size.height * .2),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: Text(
+                    '$text',
+                    style: GoogleFonts.cairo(fontSize: 30),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: size.height * .02),
+      ],
+    );
+  }
+}

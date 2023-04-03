@@ -38,3 +38,11 @@ class LoginErrorState extends CarStates{
 
   LoginErrorState([this.loginModel, this.error = '']);
 }
+class GetLocationLoadingState extends CarStates{}
+
+class GetLocationSuccessState extends CarStates{}
+
+class GetLocationErrorState extends CarStates{
+  final dynamic error;
+  GetLocationErrorState(this.error);
+}

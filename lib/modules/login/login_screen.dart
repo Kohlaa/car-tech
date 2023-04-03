@@ -8,7 +8,7 @@ import 'package:lottie/lottie.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import '../../constants/components.dart';
-import '../../layout/shop_layout.dart';
+import '../../layout/car_layout.dart';
 import '../../network/local/cache_helper.dart';
 import '../bloc/cubit.dart';
 import '../bloc/states.dart';
@@ -23,9 +23,7 @@ class LoginScreen extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
-    return BlocProvider(
-      create: (BuildContext context) => CarCubit(),
-      child: BlocConsumer<CarCubit, CarStates>(
+    return BlocConsumer<CarCubit, CarStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
             if (state.loginModel.status == true) {
@@ -250,7 +248,6 @@ class LoginScreen extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
+      );
   }
 }

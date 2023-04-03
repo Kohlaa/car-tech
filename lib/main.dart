@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:car_tech/layout/car_layout.dart';
 import 'package:car_tech/modules/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'modules/login/login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'modules/bloc/cubit.dart';
 import 'network/local/bloc_observer.dart';
 import 'network/local/cache_helper.dart';
 import 'network/remote/dio_helper.dart';
@@ -20,13 +22,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (BuildContext context) => CarCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: LoginScreen(),
+        home: const CarLayout(),
       ),
-      // home: LoginScreen(),
-      home: const SignUpScreen(),
     );
   }
 }
