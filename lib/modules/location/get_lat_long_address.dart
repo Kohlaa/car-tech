@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import '../../constants/transitions.dart';
+import '../../map/homeScreen.dart';
 import '../bloc/cubit.dart';
 import '../bloc/states.dart';
 
@@ -79,7 +80,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
             Navigator.push(
               context,
               CustomPageRoute(
-                child: const Wn4Screen(),
+                child:  homeScreen(),
               ),
             );
           }

@@ -5,7 +5,8 @@ import '../modules/bloc/cubit.dart';
 import '../modules/bloc/states.dart';
 
 class CarLayout extends StatelessWidget {
-  const CarLayout({Key? key}) : super(key: key);
+  // const CarLayout({Key? key}) : super(key: key);
+  static const String routeName = 'car-layout';
 
   @override
   Widget build(BuildContext context) {

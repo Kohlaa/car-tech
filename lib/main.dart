@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:car_tech/layout/car_layout.dart';
-import 'package:car_tech/modules/signup/signup_screen.dart';
+import 'package:car_tech/modules/layout_screens/one/wn4_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'map/homeScreen.dart';
 import 'modules/bloc/cubit.dart';
 import 'network/local/bloc_observer.dart';
 import 'network/local/cache_helper.dart';
@@ -29,8 +30,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        routes: {
+          homeScreen.routeName: (context) => homeScreen(),
+        },
+        initialRoute: CarLayout.routeName,
         // home: LoginScreen(),
-        home: const CarLayout(),
+        home:  CarLayout(),
       ),
     );
   }

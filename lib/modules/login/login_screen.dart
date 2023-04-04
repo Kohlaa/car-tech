@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                 token = state.loginModel.token!;
                 print('check : ${CacheHelper.getData(key: "token")}');
                 navigateAndFinish(
-                  const CarLayout(),
+                   CarLayout(),
                   context,
                 );
                 CarCubit.get(context).getUserData();
